@@ -51,8 +51,9 @@ public class Iceberg_test {
 
     Schema faa_schema =
         Schema.of(
-            Schema.Field.of("faa_identifier", Schema.FieldType.STRING),
-            Schema.Field.of("name", Schema.FieldType.STRING));
+            Schema.Field.of("faa_identifier", Schema.FieldType.STRING).withNullable(true),
+            Schema.Field.of("name", Schema.FieldType.STRING)
+        );
 
     // Create a pipeline and apply transforms.
     Pipeline pipeline = Pipeline.create(options);
@@ -62,7 +63,7 @@ public class Iceberg_test {
             .apply(BigQueryIO.readTableRows()
                 .from(tableSpec)
                 .withMethod(Method.DIRECT_READ)
-                .withRowRestriction("faa_identifier IS NOT NULL")
+                // .withRowRestriction("faa_identifier IS NOT NULL")
             )
             //The output from the previous step is a PCollection<TableRow>.
             // .apply(MapElements
