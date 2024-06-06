@@ -20,7 +20,10 @@ import org.apache.beam.sdk.values.TypeDescriptor;
 public class Iceberg_test {
   public static void main(String[] args) {
     // Parse the pipeline options passed into the application. Example:
-    //   --projectId=$PROJECT_ID --datasetName=$DATASET_NAME --tableName=$TABLE_NAME
+    // --runner=DirectRunner|DataflowRunner
+    // --project=$PROJECT_ID
+    // --stagingLocation=$DATAFLOW_STAGING_LOCATION
+    // --region=$DATAFLOW_REGION
     // For more information, see https://beam.apache.org/documentation/programming-guide/#configuring-pipeline-options
     PipelineOptionsFactory.register(MyOptions.class);
     MyOptions options = PipelineOptionsFactory.fromArgs(args)
@@ -30,7 +33,7 @@ public class Iceberg_test {
     // Configure the Iceberg source I/O.
     Map catalogConfig = ImmutableMap.<String, Object>builder()
         .put("catalog_name", "local")
-        .put("warehouse_location", "gs://spotify-acct-team-test-dr-data-platform/")
+        .put("warehouse_location", "gs://faa_iceberg_data/")
         .put("catalog_type", "hive")
         .build();
 
