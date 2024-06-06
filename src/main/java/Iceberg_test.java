@@ -24,6 +24,7 @@ public class Iceberg_test {
     // --project=$PROJECT_ID
     // --stagingLocation=$DATAFLOW_STAGING_LOCATION
     // --region=$DATAFLOW_REGION
+    // --gcsDestination=$ICEBERG_DESTINATION
     // For more information, see https://beam.apache.org/documentation/programming-guide/#configuring-pipeline-options
     PipelineOptionsFactory.register(MyOptions.class);
     MyOptions options = PipelineOptionsFactory.fromArgs(args)
@@ -33,7 +34,7 @@ public class Iceberg_test {
     // Configure the Iceberg source I/O.
     Map catalogConfig = ImmutableMap.<String, Object>builder()
         .put("catalog_name", "local")
-        .put("warehouse_location", "gs://faa_iceberg_data/")
+        .put("warehouse_location", options.getGcsDestination())
         .put("catalog_type", "hive")
         .build();
 
