@@ -83,12 +83,17 @@
       <version>3.4.0</version>
       <scope>provided</scope>
     </dependency>
-    <dependency>
-      <groupId>com.google.cloud.bigdataoss</groupId>
-      <artifactId>gcs-connector</artifactId>
-      <version>hadoop3-2.2.22</version>
-      <scope>provided</scope>
-    </dependency>
+<!--    <dependency>-->
+<!--      <groupId>org.apache.iceberg</groupId>-->
+<!--      <artifactId>iceberg-gcp</artifactId>-->
+<!--      <version>1.5.2</version>-->
+<!--      <scope>provided</scope>-->
+<!--    </dependency>-->
+<!--    <dependency>-->
+<!--      <groupId>org.apache.iceberg</groupId>-->
+<!--      <artifactId>iceberg-core</artifactId>-->
+<!--      <version>1.5.2</version>-->
+<!--    </dependency>-->
     <dependency>
       <groupId>org.slf4j</groupId>
       <artifactId>slf4j-jdk14</artifactId>
